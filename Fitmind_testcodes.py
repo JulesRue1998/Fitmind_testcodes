@@ -114,3 +114,19 @@ elif page == "Food & Recipes":
         elif selected_breakfast_subcategory == "Smoothies":
             st.write("Smoothie Recipes")
             # Hier kannst du spezifische Rezepte für Smoothies anzeigen
+
+
+
+
+# Initialize a counter to track water intake
+water_intake = 0
+
+# Display the water emoji
+water_emoji = "💧"
+st.write(water_emoji)
+
+# Add a button to increment the water intake counter when clicked
+if st.button("Drink a glass of water"):
+    water_intake += 1
+    st.write("You drank a glass of water!")
+    st.write("Total glasses of water drank today:", water_intake)
