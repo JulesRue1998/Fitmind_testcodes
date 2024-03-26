@@ -131,3 +131,34 @@ if st.button("Drink a glass of water", water_emoji):
     st.write("You drank a glass of water!")
     st.write("Total glasses of water drank today:", st.session_state.water_intake)
 
+
+import streamlit as st
+from datetime import datetime
+from streamlit_daterange_picker import st_daterange_picker
+
+# Title and instructions
+st.title("Diary App")
+st.write("Welcome to the Diary App! Select a date range to view or write entries.")
+
+# Date range picker
+start_date, end_date = st_daterange_picker(label="Select Date Range", start_date=datetime.now(), end_date=datetime.now())
+
+# Diary entry input
+diary_entry = st.text_area("Write your diary entry here:")
+
+# Save button
+if st.button("Save Entry"):
+    with open("diary_entries.txt", "a") as file:
+        file.write(f"Date Range: {start_date} - {end_date}\n")
+        file.write(f"Entry: {diary_entry}\n")
+        file.write("-" * 50 + "\n")
+    st.success("Entry saved successfully!")
+
+# Display existing entries
+with open("diary_entries.txt", "r") as file:
+    entries = file.readlines()
+    st.write("## Existing Entries:")
+    for entry in entries:
+        st.write(entry.strip())
+
+
