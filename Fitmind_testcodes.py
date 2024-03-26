@@ -44,7 +44,7 @@ elif page == "Food & Recipes":
         
         st.sidebar.subheader("Breakfast Subcategories")
         breakfast_subcategories = ["Eggs", "Toast", "Müsli"]
-        selected_breakfast_subcategory = st.sidebar.selectbox("Choose a breakfast subcategory", breakfast_subcategories)
+        selected_breakfast_subcategory = st.sidebar.selectbox("Choose a breakfast", breakfast_subcategories)
         
         if selected_breakfast_subcategory == "Eggs":
             st.write("Egg Recipes")
