@@ -81,7 +81,7 @@ elif page == "Food & Recipes":
         st.write("Dinner Recipes")
         # Hier kannst du spezifische Rezepte für das Abendessen anzeigen
         st.sidebar.subheader("Dinner Subcategories")
-        Dinner = ["Spaghetti", "Salmon", "Feta Pasta"]
+        Dinner_subcategories = ["Spaghetti", "Salmon", "Feta Pasta"]
         selected_Dinner_subcategory = st.sidebar.selectbox("Choose a Dinner", Dinner_subcategories)
         
         if selected_Dinner_subcategory == "Spaghetti":
