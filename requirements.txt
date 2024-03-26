@@ -3,3 +3,4 @@ streamlit
 numpy
 matplot
 streamlit-daterange-picker
+datetime
