@@ -35,7 +35,7 @@ if page == "Fitness":
 elif page == "Food & Recipes":
     st.title("Food & Recipes")
     
-    st.sidebar.subheader("Food & Recipes Subcategories")
+    st.sidebar.subheader("Food & Recipes")
     food_subcategories = ["Breakfast", "Lunch", "Dinner", "Snacks"]
     selected_subcategory = st.sidebar.selectbox("Choose a subcategory", food_subcategories)
     
