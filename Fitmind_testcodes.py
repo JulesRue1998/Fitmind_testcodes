@@ -133,32 +133,28 @@ if st.button("Drink a glass of water", water_emoji):
 
 
 import streamlit as st
-from datetime import datetime
-from streamlit_daterange_picker import st_daterange_picker
+import pandas as pd
 
-# Title and instructions
-st.title("Diary App")
-st.write("Welcome to the Diary App! Select a date range to view or write entries.")
+# Load diary data (if it exists)
+diary_data = pd.read_csv("diary.csv") if "diary.csv" in st.session_state else pd.DataFrame(columns=["Date", "Entry"])
 
-# Date range picker
-start_date, end_date = st_daterange_picker(label="Select Date Range", start_date=datetime.now(), end_date=datetime.now())
+# Display the diary entry form
+st.title("Diary")
+entry_date = st.date_input("Date", value=pd.Timestamp.now())
+entry_text = st.text_area("Enter your diary entry")
 
-# Diary entry input
-diary_entry = st.text_area("Write your diary entry here:")
-
-# Save button
+# Save the diary entry when submitted
 if st.button("Save Entry"):
-    with open("diary_entries.txt", "a") as file:
-        file.write(f"Date Range: {start_date} - {end_date}\n")
-        file.write(f"Entry: {diary_entry}\n")
-        file.write("-" * 50 + "\n")
+    diary_data = diary_data.append({"Date": entry_date, "Entry": entry_text}, ignore_index=True)
+    diary_data.to_csv("diary.csv", index=False)
     st.success("Entry saved successfully!")
 
-# Display existing entries
-with open("diary_entries.txt", "r") as file:
-    entries = file.readlines()
-    st.write("## Existing Entries:")
-    for entry in entries:
-        st.write(entry.strip())
+# Display existing diary entries
+if not diary_data.empty:
+    st.subheader("Previous Entries")
+    st.write(diary_data)
+else:
+    st.info("No entries yet.")
+
 
 
