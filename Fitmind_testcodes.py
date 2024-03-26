@@ -25,4 +25,12 @@ if page == "Fitness":
     elif selected_subcategory == "Endurance":
         st.write("Content for Endurance category")
 
-
+st.sidebar.subheader("Second Subcategory")
+    second_subcategory = st.sidebar.selectbox("Choose a second subcategory", ["Option 1", "Option 2", "Option 3"])
+    
+    if second_subcategory == "Option 1":
+        st.write("Content for Option 1")
+    elif second_subcategory == "Option 2":
+        st.write("Content for Option 2")
+    elif second_subcategory == "Option 3":
+        st.write("Content for Option 3")
