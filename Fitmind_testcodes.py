@@ -115,6 +115,20 @@ elif page == "Food & Recipes":
             st.write("Smoothie Recipes")
             # Hier kannst du spezifische Rezepte für Smoothies anzeigen
 
+import streamlit as st
+
+# Initialize a counter to track water intake
+water_intake = 0
+
+# Display the water emoji
+water_emoji = "💧"
+st.write(water_emoji)
+
+# Add a checkbox to mark when water is drank
+if st.checkbox("I drank a glass of water"):
+    water_intake += 1
+    st.write("You drank a glass of water!")
+    st.write("Total glasses of water drank today:", water_intake)
 
 
 
