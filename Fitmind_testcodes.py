@@ -124,21 +124,6 @@ water_intake = 0
 water_emoji = "💧"
 st.write(water_emoji)
 
-# Add a checkbox to mark when water is drank
-if st.checkbox("I drank a glass of water"):
-    water_intake += 1
-    st.write("You drank a glass of water!")
-    st.write("Total glasses of water drank today:", water_intake)
-
-
-
-# Initialize a counter to track water intake
-water_intake = 0
-
-# Display the water emoji
-water_emoji = "💧"
-st.write(water_emoji)
-
 # Add a button to increment the water intake counter when clicked
 if st.button("Drink a glass of water"):
     water_intake += 1
