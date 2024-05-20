@@ -1,10 +1,6 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import random
-
-st.write("Tracker Mood and stress")
 
 # Dummy DataFrame for demonstration
 data = {
@@ -56,5 +52,6 @@ if not selected_data.empty:
     st.pyplot(plt)
 else:
     st.write('No data available for selected date.')
+
 
 
