@@ -54,4 +54,4 @@ save_df(df)
 
 # Anzeigen der Tabelle mit den eingegebenen Daten
 st.write("Eingegebene Daten:")
-st.data
+st.dataframe
