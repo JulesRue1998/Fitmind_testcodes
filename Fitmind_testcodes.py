@@ -15,7 +15,18 @@ data_df = pd.DataFrame(
     }
 )
 
+# Benutzereingabe für den Spaltennamen
+new_column_name = st.text_input("Neuer Spaltenname", "")
 
+# Wenn ein neuer Spaltenname eingegeben wurde
+if new_column_name:
+    # Generiere die Werte für die neue Spalte (zum Beispiel Nullen für jeden Tag)
+    new_column_values = [0] * 30  # Dummy-Werte, die ersetzt werden müssen
+    # Füge die neue Spalte zum DataFrame hinzu
+    data_df[new_column_name] = new_column_values
+
+# Anzeigen des DataFrames
+st.write(data_df)
 
 st.data_editor(
     data_df,
