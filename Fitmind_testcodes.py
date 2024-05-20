@@ -14,33 +14,4 @@ st.write("Wie geht es dir heute?")
 mood = st.slider("Stimmung", 1, 10, 5)
 stress_level = st.slider("Stresslevel", 1, 10, 5)
 
-# Daten an die Session-Variable anhängen
-new_entry = pd.Series({'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level})
-st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
 
-# Tabelle anzeigen
-st.subheader("Gespeicherte Daten")
-st.write(st.session_state.data)
-
-# Liniendiagramm
-st.subheader("Stress Level and Mood Over Time")
-
-# Plotten des Liniendiagramms
-if not st.session_state.data.empty:
-    plt.figure(figsize=(10, 6))
-
-    # Stresslevel plotten
-    plt.plot(st.session_state.data['Date'], st.session_state.data['Stress Level'], marker='o', label='Stress Level')
-
-    # Stimmung plotten
-    plt.plot(st.session_state.data['Date'], st.session_state.data['Mood'], marker='o', label='Mood')
-
-    plt.xlabel('Date')
-    plt.ylabel('Level')
-    plt.title('Stress Level and Mood Over Time')
-    plt.yticks(range(1, 11))  # Festlegen der y-Achse von 1 bis 10
-    plt.xticks(rotation=45)
-    plt.legend()
-    st.pyplot(plt)
-else:
-    st.write("Keine Daten verfügbar.")
