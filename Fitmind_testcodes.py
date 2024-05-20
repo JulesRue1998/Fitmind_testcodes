@@ -25,8 +25,7 @@ if new_column_name:
     # Füge die neue Spalte zum DataFrame hinzu
     data_df[new_column_name] = new_column_values
 
-# Anzeigen des DataFrames
-st.write(data_df)
+
 
 st.data_editor(
     data_df,
