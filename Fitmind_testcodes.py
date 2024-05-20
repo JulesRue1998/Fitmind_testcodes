@@ -9,7 +9,7 @@ moos_value = st.number_input("Wert für Moos (1-10)", min_value=1, max_value=10,
 stress_value = st.number_input("Wert für Stress (1-10)", min_value=1, max_value=10, value=5)
 
 # Festlegen der ersten beiden Zeilen mit den ausgewählten Werten
-data = pd.DataFrame({'Datum': ['Moos', 'Stress'], 'Spalte 2': [moos_value, stress_value]})
+data = pd.DataFrame({' ': ['Moos', 'Stress'], 'Datum ': [moos_value, stress_value]})
 
 # Eingabe der Anzahl der zusätzlichen Spalten durch den Benutzer
 num_cols = st.number_input("Anzahl der zusätzlichen Spalten", min_value=0, value=0)
