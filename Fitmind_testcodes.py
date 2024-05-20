@@ -1,25 +1,24 @@
 import streamlit as st
 import pandas as pd
 
+# Titel und Anweisungen
+st.subheader("Mood and Stress Entry")
+
 # Initialisierung der Daten
 if 'data' not in st.session_state:
-    st.session_state.data = pd.DataFrame(columns=['Date', 'Mood', 'Stress Level'])
+    st.session_state.data = pd.DataFrame(columns=['Date', 'Mood', 'Stress'])
 
-# Titel und Anweisungen
-st.subheader("Mental Health")
-st.write("Trage das Datum sowie deine Stimmung und Stresslevel ein:")
+# Schaltfläche zum Hinzufügen neuer Zeilen
+if st.button("Neue Zeile hinzufügen"):
+    st.session_state.data.loc[len(st.session_state.data)] = ['Neues Datum', None, None]
 
-# Input Widgets für manuelle Eingabe
-date = st.date_input("Datum", value=pd.Timestamp.now().date())
-mood = st.number_input("Stimmung", min_value=1, max_value=10, value=5)
-stress_level = st.number_input("Stresslevel", min_value=1, max_value=10, value=5)
+# Eingabe für jedes Datum im DataFrame
+for i, row in st.session_state.data.iterrows():
+    st.write(f"Eintrag {i+1}")
+    row['Date'] = st.date_input(f"Datum für Eintrag {i+1}", row['Date'])
+    row['Mood'] = st.slider(f"Stimmung für Eintrag {i+1}", 1, 10, row['Mood'] or 5)
+    row['Stress'] = st.slider(f"Stress für Eintrag {i+1}", 1, 10, row['Stress'] or 5)
 
-# Daten an die Session-Variable anhängen
-if st.button("Daten speichern"):
-    new_entry = {'Date': date, 'Mood': mood, 'Stress Level': stress_level}
-    st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
-    st.success("Daten erfolgreich gespeichert!")
-
-# Tabelle anzeigen
-st.subheader("Gespeicherte Daten")
+# Anzeigen des erstellten DataFrames
+st.subheader("Erstellter DataFrame")
 st.write(st.session_state.data)
