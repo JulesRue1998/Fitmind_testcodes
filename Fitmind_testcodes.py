@@ -15,11 +15,6 @@ stress = st.number_input("Stress", min_value=1, max_value=10, step=1, key="stres
 # Hinzufügen der eingegebenen Daten als Zeile zum DataFrame
 df.loc[len(df)] = [current_date, mood, stress]
 
-# Anzeigen der Tabelle mit den eingegebenen Daten
-st.write("Eingegebene Daten:")
-st.dataframe(df)
-
-
 import streamlit as st
 import pandas as pd
 from datetime import datetime
@@ -27,9 +22,9 @@ from datetime import datetime
 # Laden des vorhandenen DataFrames oder Erstellen eines neuen, falls keiner vorhanden ist
 def load_or_create_df():
     try:
-        df = pd.read_csv("data.csv")  # Versuche, den DataFrame aus einer CSV-Datei zu laden
+        df = pd.read_csv("dataframe.csv")  # Versuche, den DataFrame aus einer CSV-Datei zu laden
     except FileNotFoundError:
-        df = pd.DataFrame(columns=["Datum", "Mood", "Stress"])  # Wenn die Datei nicht gefunden wird, erstelle einen leeren DataFrame
+        df = pd.Dataframe(columns=["Datum", "Mood", "Stress"])  # Wenn die Datei nicht gefunden wird, erstelle einen leeren DataFrame
     return df
 
 # Funktion zum Speichern des DataFrames in einer CSV-Datei
