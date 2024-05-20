@@ -19,9 +19,6 @@ for i in range(num_rows):
     # Hinzufügen der eingegebenen Daten als Zeile zum DataFrame
     df.loc[current_date] = [mood, stress]
 
-# Anzeigen des erstellten DataFrames
-st.dataframe(df)
-
 import streamlit as st
 import pandas as pd
 from datetime import datetime
