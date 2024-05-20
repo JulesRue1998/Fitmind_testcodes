@@ -3,7 +3,7 @@ import streamlit as st
 
 data_df = pd.DataFrame(
     {
-        "Datum": ["st.selectbox", "st.number_input", "st.text_area", "st.button"],
+        "Datum": ["current_date = datetime.now().date()", "st.number_input", "st.text_area", "st.button"],
     }
 )
 
