@@ -5,10 +5,6 @@ import pandas as pd
 if 'data' not in st.session_state:
     st.session_state.data = pd.DataFrame(columns=['Date', 'Mood', 'Stress Level'])
 
-# Tabelle anzeigen
-st.subheader("Gespeicherte Daten")
-st.write(st.session_state.data)
-
 # Titel und Anweisungen
 st.subheader("Mental Health")
 st.write("Trage das Datum sowie deine Stimmung und Stresslevel ein:")
@@ -26,3 +22,7 @@ if st.button("Daten speichern"):
 # Erfolgsmeldung anzeigen
 if 'new_entry' in locals():
     st.success("Daten erfolgreich gespeichert!")
+
+# Tabelle anzeigen
+st.subheader("Gespeicherte Daten")
+st.write(st.session_state.data)
