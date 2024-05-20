@@ -16,7 +16,7 @@ data_df = pd.DataFrame(
 )
 
 # Benutzereingabe für den Spaltennamen
-new_column_name = st.text_input("Neuer Spaltenname", "")
+new_column_name = st.text_input("Neues Datum", "")
 
 # Wenn ein neuer Spaltenname eingegeben wurde
 if new_column_name:
