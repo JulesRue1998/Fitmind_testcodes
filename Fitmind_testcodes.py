@@ -14,18 +14,3 @@ data_df = pd.DataFrame(
         "Verlauf der letzten 30 Tage": [None]
     }
 )
-
-
-st.data_editor(
-    data_df,
-    column_config={
-        "widgets": st.column_config.TextColumn(
-            "Widgets",
-            help="Streamlit **widget** commands 🎈",
-            default="st.",
-            max_chars=50,
-            validate="^st\.[a-z_]+$",
-        )
-    },
-    hide_index=True,
-)
