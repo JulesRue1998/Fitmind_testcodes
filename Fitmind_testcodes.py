@@ -18,9 +18,6 @@ stress_level = st.number_input("Stresslevel", min_value=1, max_value=10, value=5
 if st.button("Daten speichern"):
     new_entry = {'Date': date, 'Mood': mood, 'Stress Level': stress_level}
     st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
-
-# Erfolgsmeldung anzeigen
-if 'new_entry' in locals():
     st.success("Daten erfolgreich gespeichert!")
 
 # Tabelle anzeigen
