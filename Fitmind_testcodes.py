@@ -2,49 +2,49 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Dummy DataFrame for demonstration
-data = {
-    'Date': [],
-    'Mood': [],
-    'Stress Level': []
-}
+# Initialisierung der Daten nur beim ersten Aufruf der Seite
+if 'data' not in st.session_state:
+    st.session_state.data = {
+        'Date': [],
+        'Mood': [],
+        'Stress Level': []
+    }
 
-# Title and instructions
+# Title und Anweisungen
 st.subheader("Mental Health")
 st.write("Wie geht es dir heute?")
-mood = st.slider("Stimmung", 0, 10, 5)
-st.write("Wie gestresst warst du heute?")
-stress_level = st.slider("Stresslevel", 0, 10, 5)
+mood = st.slider("Stimmung", 1, 10, 5)
+# Input Widgets
+st.write("Wie gestresst warst du heute")
+stress_level = st.slider("Stresslevel", 1, 10, 5)
 
-if data['Date']:
-    data['Date'].append(pd.Timestamp.now().date())
-    data['Mood'].append(mood)
-    data['Stress Level'].append(stress_level)
-else:
-    initial_date = pd.Timestamp.now().date()
-    data['Date'] = [initial_date]
-    data['Mood'] = [mood]
-    data['Stress Level'] = [stress_level]
+# Daten an die Session-Variable anhängen
+if st.button("Daten speichern"):
+    st.session_state.data['Date'].append(pd.Timestamp.now().date())
+    st.session_state.data['Mood'].append(mood)
+    st.session_state.data['Stress Level'].append(stress_level)
 
-# Convert data to DataFrame
-df = pd.DataFrame(data)
+# Umwandlung der Daten in DataFrame
+df = pd.DataFrame(st.session_state.data)
 
-# Line chart
+# Liniendiagramm
 st.subheader("Stress Level and Mood Over Time")
 plt.figure(figsize=(10, 6))
 
-# Plot stress level
+# Stresslevel plotten
 plt.plot(df['Date'], df['Stress Level'], marker='o', label='Stress Level')
 
-# Plot mood
+# Stimmung plotten
 plt.plot(df['Date'], df['Mood'], marker='o', label='Mood')
 
 plt.xlabel('Date')
 plt.ylabel('Level')
 plt.title('Stress Level and Mood Over Time')
+plt.yticks(range(1, 11))  # Festlegen der y-Achse von 1 bis 10
+
+# Festlegen der x-Ticks, um nur das Datum des ersten Eintrags und das aktuelle Datum anzuzeigen
 xticks = [df['Date'].iloc[0], pd.Timestamp.now().date()]
 plt.xticks(xticks, rotation=45)
-plt.xticks(rotation=45)
-plt.yticks(range(1, 11))  # Fixing y-axis from 1 to 10
+
 plt.legend()
 st.pyplot(plt)
