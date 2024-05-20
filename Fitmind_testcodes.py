@@ -29,7 +29,7 @@ try:
 except ValueError:
     stress = None  # Wenn die Eingabe keine gültige Zahl ist, wird None verwendet
 data_df["Stress"] = stress
-)
+
 
 # Anzeigen des DataFrames
 st.write(data_df)
