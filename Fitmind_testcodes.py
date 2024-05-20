@@ -42,4 +42,3 @@ data_df["Stress"] = stress
 # Anzeigen des DataFrames
 st.write(data_df)
 
-
