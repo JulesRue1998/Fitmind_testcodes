@@ -18,12 +18,12 @@ stress_level = st.slider("Stresslevel", 1, 10, 5)
 new_entry = pd.Series({'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level})
 st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
 
+# Tabelle anzeigen
+st.subheader("Gespeicherte Daten")
+st.write(st.session_state.data)
+
 # Liniendiagramm
 st.subheader("Stress Level and Mood Over Time")
-
-# Anzeigen der Daten in einer Tabelle
-st.write("Gespeicherte Daten:")
-st.write(st.session_state.data)
 
 # Plotten des Liniendiagramms
 if not st.session_state.data.empty:
