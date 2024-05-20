@@ -16,13 +16,13 @@ mood = st.slider("Stimmung", 0, 10, 5)
 st.write("Wie gestresst warst du heute?")
 stress_level = st.slider("Stresslevel", 0, 10, 5)
 
-# Append data to DataFrame only if it's not empty
 if data['Date']:
     data['Date'].append(pd.Timestamp.now().date())
     data['Mood'].append(mood)
     data['Stress Level'].append(stress_level)
 else:
-    data['Date'] = [pd.Timestamp.now().date()]
+    initial_date = pd.Timestamp.now().date()
+    data['Date'] = [initial_date]
     data['Mood'] = [mood]
     data['Stress Level'] = [stress_level]
 
@@ -45,4 +45,3 @@ plt.title('Stress Level and Mood Over Time')
 plt.xticks(rotation=45)
 plt.legend()
 st.pyplot(plt)
-
