@@ -1,11 +1,19 @@
 import pandas as pd
 import streamlit as st
+from datetime import datetime
 
+# Aktuelles Datum
+current_date = datetime.now().date()
+
+# DataFrame mit dem aktuellen Datum erstellen
 data_df = pd.DataFrame(
     {
-        "Datum": ["Mood", "Stress"],
+        "Datum": [current_date, current_date],
+        "Mood": [None, None],
+        "Stress": [None, None]
     }
 )
+
 
 st.data_editor(
     data_df,
