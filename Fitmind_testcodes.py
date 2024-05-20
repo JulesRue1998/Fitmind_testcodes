@@ -2,23 +2,20 @@ import streamlit as st
 import pandas as pd
 
 # Titel und Anweisungen
-st.subheader("Mood and Stress Entry")
+st.subheader("Benutzerdefinierte Daten eingeben")
 
-# Initialisierung der Daten
-if 'data' not in st.session_state:
-    st.session_state.data = pd.DataFrame(columns=['Date', 'Mood', 'Stress'])
+# Festlegen der ersten beiden Zeilen
+data = pd.DataFrame({'Datum': ['Moos', 'Stress'], 'Spalte 2': [None, None]})
 
-# Schaltfläche zum Hinzufügen neuer Zeilen
-if st.button("Neue Zeile hinzufügen"):
-    st.session_state.data.loc[len(st.session_state.data)] = ['Neues Datum', None, None]
+# Eingabe der Anzahl der zusätzlichen Spalten durch den Benutzer
+num_cols = st.number_input("Anzahl der zusätzlichen Spalten", min_value=0, value=0)
 
-# Eingabe für jedes Datum im DataFrame
-for i, row in st.session_state.data.iterrows():
-    st.write(f"Eintrag {i+1}")
-    row['Date'] = st.date_input(f"Datum für Eintrag {i+1}", row['Date'])
-    row['Mood'] = st.slider(f"Stimmung für Eintrag {i+1}", 1, 10, row['Mood'] or 5)
-    row['Stress'] = st.slider(f"Stress für Eintrag {i+1}", 1, 10, row['Stress'] or 5)
+# Eingabe der Spaltennamen durch den Benutzer
+for i in range(num_cols):
+    col_name = st.text_input(f"Name für Spalte {i+3}", key=f"col_name_{i}")
+    data[col_name] = None
 
 # Anzeigen des erstellten DataFrames
 st.subheader("Erstellter DataFrame")
-st.write(st.session_state.data)
+st.write(data)
+
