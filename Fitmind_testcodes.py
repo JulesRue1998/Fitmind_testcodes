@@ -15,9 +15,9 @@ for i in range(num_cols):
     # Datum für den Spaltennamen
     col_date = st.date_input(f"Datum für Spalte {i+3}", key=f"col_date_{i}")
     # Wert für die erste Zeile (Moos)
-    mood_value = st.slider(f"Wert für Moos in Spalte {i+3}", 1, 10, key=f"mood_{i}")
+    mood_value = st.number_input(f"Wert für Moos in Spalte {i+3}", min_value=1, max_value=10, key=f"mood_{i}")
     # Wert für die zweite Zeile (Stress)
-    stress_value = st.slider(f"Wert für Stress in Spalte {i+3}", 1, 10, key=f"stress_{i}")
+    stress_value = st.number_input(f"Wert für Stress in Spalte {i+3}", min_value=1, max_value=10, key=f"stress_{i}")
     # Spalte zum DataFrame hinzufügen
     data[col_date] = [mood_value, stress_value]
 
