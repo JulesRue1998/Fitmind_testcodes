@@ -9,9 +9,9 @@ current_date = datetime.now().date()
 data_df = pd.DataFrame(
     {
         "Datum": [current_date, current_date],
-        "Mood": [None],
-        "Stress": [None],
-        "Verlauf der letzten 30 Tage": [None]
+        "Mood": [None, None, None],
+        "Stress": [None, None, None],
+        "Verlauf der letzten 30 Tage": [None, None, None]
     }
 )
 
