@@ -11,8 +11,8 @@ current_date = datetime.now().date()
 data_df = pd.DataFrame(
     {
         "Datum": [current_date],
-        "Mood": [None],
-        "Stress": [None],
+        "Datum": [current_date],
+        "Datum": [current:date],
         "Verlauf der letzten 30 Tage": [None]
     }
 )
