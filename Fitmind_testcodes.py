@@ -6,15 +6,14 @@ import seaborn as sns
 from PIL import Image
 
 
-elif page == "Mental Health":
-    st.subheader("Mental Health")
 
-    # Text elements
-    st.write("Wie geht es dir heute?")
+st.subheader("Mental Health")
+# Text elements
+st.write("Wie geht es dir heute?")
 
-    # Input Widgets
-    mood = st.slider("Stimmung", 0, 10, 5)
-    stress_level = st.slider("Stresslevel", 0, 10, 5)
+# Input Widgets
+mood = st.slider("Stimmung", 0, 10, 5)
+stress_level = st.slider("Stresslevel", 0, 10, 5)
 
 # Dummy DataFrame for demonstration
 data = {
