@@ -24,19 +24,22 @@ st.subheader("Stress Level and Mood Over Time")
 plt.figure(figsize=(10, 6))
 
 # Stresslevel plotten
-plt.plot(st.session_state.data['Date'], st.session_state.data['Stress Level'], marker='o', label='Stress Level')
+if not st.session_state.data.empty:
+    plt.plot(st.session_state.data['Date'], st.session_state.data['Stress Level'], marker='o', label='Stress Level')
 
 # Stimmung plotten
-plt.plot(st.session_state.data['Date'], st.session_state.data['Mood'], marker='o', label='Mood')
+if not st.session_state.data.empty:
+    plt.plot(st.session_state.data['Date'], st.session_state.data['Mood'], marker='o', label='Mood')
 
 plt.xlabel('Date')
 plt.ylabel('Level')
 plt.title('Stress Level and Mood Over Time')
 plt.yticks(range(1, 11))  # Festlegen der y-Achse von 1 bis 10
 
-# Festlegen der x-Ticks, um nur das Datum des ersten Eintrags und das aktuelle Datum anzuzeigen
-xticks = [st.session_state.data['Date'].iloc[0], pd.Timestamp.now().date()]
-plt.xticks(xticks, rotation=45)
+# Festlegen der x-Ticks, um nur das Datum des ersten Eintrags und das aktuelle Datum anzuzeigen, wenn Daten vorhanden sind
+if not st.session_state.data.empty:
+    xticks = [st.session_state.data['Date'].iloc[0], pd.Timestamp.now().date()]
+    plt.xticks(xticks, rotation=45)
 
 plt.legend()
 st.pyplot(plt)
