@@ -2,11 +2,16 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Festlegung der Anzahl der Zeilen im DataFrame
-num_rows = 1
+# Laden des vorhandenen DataFrames (falls vorhanden)
+@st.experimental_memoize
+def load_df():
+    return pd.DataFrame(columns=["Datum", "Stimmung", "Stress"])
 
-# Erstellung eines leeren DataFrames mit den Spalten "Stimmung" und "Stress"
-df = pd.DataFrame(columns=["Datum", "Stimmung", "Stress"])
+# Festlegung der Anzahl der Zeilen im DataFrame
+num_rows = st.number_input("Anzahl der Zeilen", min_value=1, value=1, step=1)
+
+# Erstellung eines leeren DataFrames, falls nicht vorhanden
+df = load_df()
 
 # Heutiges Datum
 current_date = datetime.now().date()
@@ -14,16 +19,17 @@ current_date = datetime.now().date()
 # Schleife zur Eingabe der Daten für jede Zeile
 for i in range(num_rows):
     # Benutzereingabe für Stimmung und Stress für jede Zeile
-    mood = st.number_input(f"Stimmung", min_value=1, max_value=10, step=1)
-    stress = st.number_input(f"Stress", min_value=1, max_value=10, step=1)
+    mood = st.number_input(f"Stimmung (Zeile {i+1})", min_value=1, max_value=10, step=1)
+    stress = st.number_input(f"Stress (Zeile {i+1})", min_value=1, max_value=10, step=1)
     # Hinzufügen der eingegebenen Daten als Zeile zum DataFrame
-    df.loc[current_date] = [current_date, mood, stress]
-
-# Filtern der Daten der letzten 30 Tage
-last_30_days = df[df['Datum'] >= current_date - timedelta(days=30)]
+    df.loc[len(df)] = [current_date, mood, stress]
 
 # Anzeigen des erstellten DataFrames
 st.dataframe(df)
 
-# Line-Chart für die Daten der letzten 30 Tage anzeigen
-st.column_chart(last_30_days.set_index('Datum')[['Stimmung', 'Stress']])
+# Neue Zeilen zum DataFrame hinzufügen
+if st.button("Neue Zeile hinzufügen"):
+    new_mood = st.number_input(f"Stimmung (Zeile {num_rows+1})", min_value=1, max_value=10, step=1)
+    new_stress = st.number_input(f"Stress (Zeile {num_rows+1})", min_value=1, max_value=10, step=1)
+    df.loc[len(df)] = [current_date, new_mood, new_stress]
+    st.experimental_memoize(df)
