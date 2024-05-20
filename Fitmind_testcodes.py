@@ -22,14 +22,17 @@ current_date = datetime.now().date()
 
 # Benutzereingabe für Mood und Stress
 num_rows = st.number_input("Anzahl der Zeilen zum Hinzufügen", min_value=1, value=1, step=1)
-for i in range(num_rows):
-    mood = st.number_input(f"Mood für Zeile {i+1}", min_value=1, max_value=10, step=1)
-    stress = st.number_input(f"Stress für Zeile {i+1}", min_value=1, max_value=10, step=1)
-    df.loc[len(df)] = [current_date, mood, stress]
+if num_rows > 0:
+    new_rows = []
+    for i in range(num_rows):
+        mood = st.number_input(f"Mood für Zeile {i+1}", min_value=1, max_value=10, step=1)
+        stress = st.number_input(f"Stress für Zeile {i+1}", min_value=1, max_value=10, step=1)
+        new_rows.append([current_date, mood, stress])
+    df = df.append(pd.DataFrame(new_rows, columns=["Datum", "Mood", "Stress"]), ignore_index=True)
 
 # Speichern des aktualisierten DataFrames
 save_df(df)
 
 # Anzeigen der Tabelle mit den eingegebenen Daten
 st.write("Eingegebene Daten:")
-st.data
+st.dataframe(df)
