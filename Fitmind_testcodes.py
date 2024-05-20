@@ -26,4 +26,4 @@ last_30_days = df[df['Datum'] >= current_date - timedelta(days=30)]
 st.dataframe(df)
 
 # Line-Chart für die Daten der letzten 30 Tage anzeigen
-st.line_chart(last_30_days.set_index('Datum')[['Stimmung', 'Stress']])
+st.column_chart(last_30_days.set_index('Datum')[['Stimmung', 'Stress']])
