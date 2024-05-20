@@ -4,16 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
 
-
-
-st.subheader("Mental Health")
-# Text elements
-st.write("Wie geht es dir heute?")
-
-# Input Widgets
-mood = st.slider("Stimmung", 0, 10, 5)
-stress_level = st.slider("Stresslevel", 0, 10, 5)
-
 # Dummy DataFrame for demonstration
 data = {
     'Date': [],
@@ -24,9 +14,9 @@ data = {
 # Title and instructions
 st.subheader("Mental Health")
 st.write("Wie geht es dir heute?")
-
-# Input Widgets
 mood = st.slider("Stimmung", 0, 10, 5)
+
+st.write("Wie gestresst warst du heute")
 stress_level = st.slider("Stresslevel", 0, 10, 5)
 
 # Append data to DataFrame
