@@ -14,11 +14,10 @@ df = load_df()
 current_date = datetime.now().date()
 
 # Benutzereingabe für Mood und Stress
-mood = st.number_input("Mood", min_value=1, max_value=10)
-stress = st.number_input("Stress", min_value=1, max_value=10)
+mood = st.number_input("Mood", min_value=1, max_value=10, step=1, key="mood")
+stress = st.number_input("Stress", min_value=1, max_value=10, step=1, key="stress")
 
-# Hinzufügen der eingegebenen Daten als Zeile zum DataFrame
-df.loc[len(df)] = [current_date, mood, stress]
-
-# Anzeigen des DataFrames
-st.dataframe(df)
+# Anzeigen der eingegebenen Daten
+st.write("Datum:", current_date)
+st.write("Mood:", mood)
+st.write("Stress:", stress)
