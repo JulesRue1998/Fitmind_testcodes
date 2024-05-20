@@ -11,8 +11,13 @@ data_df = pd.DataFrame(columns=["Datum", "Mood", "Stress"])
 
 # Funktion zum Hinzufügen einer neuen Zeile
 def add_row():
-    new_row = {"Datum": datetime.now().date(), "Mood": None, "Stress": None}
-    data_df.loc[len(data_df)] = new_row
+    # Überprüfen, ob bereits ein Eintrag für das heutige Datum vorhanden ist
+    today_entries = data_df[data_df["Datum"] == datetime.now().date()]
+    if len(today_entries) == 0:  # Wenn kein Eintrag vorhanden ist, eine neue Zeile hinzufügen
+        new_row = {"Datum": datetime.now().date(), "Mood": None, "Stress": None}
+        data_df.loc[len(data_df)] = new_row
+    else:
+        st.warning("Eintrag für heute existiert bereits.")
 
 # Schaltfläche zum Hinzufügen einer neuen Zeile
 if st.button("Neue Zeile hinzufügen"):
@@ -36,6 +41,5 @@ data_df["Stress"] = stress
 
 # Anzeigen des DataFrames
 st.write(data_df)
-
 
 
