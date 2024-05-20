@@ -12,7 +12,7 @@ data_df = pd.DataFrame(
     {
         "Datum": [current_date],
         "Datum": [current_date],
-        "Datum": [current:date],
+        "Datum": [current_date],
         "Verlauf der letzten 30 Tage": [None]
     }
 )
