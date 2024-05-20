@@ -8,10 +8,10 @@ if 'data' not in st.session_state:
 
 # Title und Anweisungen
 st.subheader("Mental Health")
-st.write("Wie geht es dir heute?")
-
-# Input Widgets
+st.write("Wie war deine Stimmung heute?")
 mood = st.slider("Stimmung", 1, 10, 5)
+# Input Widgets
+st.write("Wie war dein Stressempfinden heute?")
 stress_level = st.slider("Stresslevel", 1, 10, 5)
 
 
