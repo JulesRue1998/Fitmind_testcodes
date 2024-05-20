@@ -10,9 +10,7 @@ current_date = datetime.now().date()
 # DataFrame mit dem aktuellen Datum erstellen
 data_df = pd.DataFrame(
     {
-        "Datum": ["Stress"],
-        "current_date": ["Mood"],
-        "current_date": [None],
+        "Datum": ["Stress", "Mood"],
         "Verlauf der letzten 30 Tage": [None]
     }
 )
