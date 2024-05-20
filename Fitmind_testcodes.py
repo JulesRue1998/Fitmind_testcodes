@@ -16,7 +16,7 @@ stress_level = st.slider("Stresslevel", 1, 10, 5)
 
 # Daten an die Session-Variable anhängen
 if st.button("Daten speichern"):
-    new_entry = {'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level}
+    new_entry = pd.Series({'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level})
     st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
 
 # Liniendiagramm
