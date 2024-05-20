@@ -19,7 +19,12 @@ df.loc[len(df)] = [current_date, mood, stress]
 st.write("Eingegebene Daten:")
 st.dataframe(df)
 
-# Funktion zum Laden des vorhandenen DataFrames oder zum Erstellen eines neuen, falls keiner vorhanden ist
+
+import streamlit as st
+import pandas as pd
+from datetime import datetime
+
+# Laden des vorhandenen DataFrames oder Erstellen eines neuen, falls keiner vorhanden ist
 def load_or_create_df():
     try:
         df = pd.read_csv("data.csv")  # Versuche, den DataFrame aus einer CSV-Datei zu laden
@@ -27,7 +32,7 @@ def load_or_create_df():
         df = pd.DataFrame(columns=["Datum", "Mood", "Stress"])  # Wenn die Datei nicht gefunden wird, erstelle einen leeren DataFrame
     return df
 
-# Funktion zum Speichern des aktuellen DataFrames in einer CSV-Datei
+# Funktion zum Speichern des DataFrames in einer CSV-Datei
 def save_df(df):
     df.to_csv("data.csv", index=False)
 
@@ -38,21 +43,15 @@ df = load_or_create_df()
 current_date = datetime.now().date()
 
 # Benutzereingabe für Mood und Stress
-mood = st.number_input("Mood", min_value=1, max_value=10, step=1, key="mood")
-stress = st.number_input("Stress", min_value=1, max_value=10, step=1, key="stress")
-
-# Überprüfen, ob der Benutzer eine neue Zeile hinzufügen möchte
-if st.button("Neue Zeile hinzufügen"):
-    # Hinzufügen der eingegebenen Daten als Zeile zum DataFrame
+num_rows = st.number_input("Anzahl der Zeilen zum Hinzufügen", min_value=1, value=1, step=1)
+for i in range(num_rows):
+    mood = st.number_input(f"Mood für Zeile {i+1}", min_value=1, max_value=10, step=1)
+    stress = st.number_input(f"Stress für Zeile {i+1}", min_value=1, max_value=10, step=1)
     df.loc[len(df)] = [current_date, mood, stress]
-    # Speichern des aktualisierten DataFrames
-    save_df(df)
+
+# Speichern des aktualisierten DataFrames
+save_df(df)
 
 # Anzeigen der Tabelle mit den eingegebenen Daten
 st.write("Eingegebene Daten:")
-st.dataframe(df)
-
-# Falls Sie die alten Zeilen unveränderbar machen möchten, können Sie den DataFrame auch einfrieren
-# df_frozen = df.copy()  # Erstellen einer Kopie des DataFrames
-# df_frozen.set_index("Datum", inplace=True)  # Festlegen des Datums als Index, um die Zeilen unveränderbar zu machen
-# st.dataframe(df_frozen)
+st.data
