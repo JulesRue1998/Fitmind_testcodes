@@ -2,6 +2,8 @@ import pandas as pd
 import streamlit as st
 from datetime import datetime
 
+st.subheader("Mood & Stress Tracker")
+
 # Aktuelles Datum
 current_date = datetime.now().date()
 
