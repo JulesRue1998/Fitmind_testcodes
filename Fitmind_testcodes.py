@@ -16,8 +16,11 @@ stress_level = st.slider("Stresslevel", 1, 10, 5)
 
 # Daten an die Session-Variable anhängen
 if st.button("Daten speichern"):
-    new_entry = pd.Series({'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level})
-    st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
+    try:
+        new_entry = pd.Series({'Date': pd.Timestamp.now().date(), 'Mood': mood, 'Stress Level': stress_level})
+        st.session_state.data = st.session_state.data.append(new_entry, ignore_index=True)
+    except Exception as e:
+        st.write("Fehler beim Hinzufügen der Daten:", e)
 
 # Liniendiagramm
 st.subheader("Stress Level and Mood Over Time")
@@ -43,3 +46,6 @@ if not st.session_state.data.empty:
 
 plt.legend()
 st.pyplot(plt)
+
+# Debug-Ausgaben
+st.write("Session State Data:", st.session_state.data)
