@@ -1,9 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-
-import streamlit as st
-import pandas as pd
 
 # Initialisierung der Daten
 if 'data' not in st.session_state:
@@ -15,13 +11,11 @@ st.write(st.session_state.data)
 
 # Titel und Anweisungen
 st.subheader("Mental Health")
-st.write("Wie war deine Stimmung heute?")
+st.write("Trage deine Stimmung und Stresslevel ein:")
 
-# Input Widgets für Stimmung und Stressempfinden
-mood = st.slider("Stimmung", 1, 10, 5)
-
-st.write("Wie war dein Stressempfinden heute?")
-stress_level = st.slider("Stresslevel", 1, 10, 5)
+# Input Widgets für manuelle Eingabe
+mood = st.number_input("Stimmung", min_value=1, max_value=10, value=5)
+stress_level = st.number_input("Stresslevel", min_value=1, max_value=10, value=5)
 
 # Daten an die Session-Variable anhängen
 if st.button("Daten speichern"):
@@ -31,4 +25,3 @@ if st.button("Daten speichern"):
 # Erfolgsmeldung anzeigen
 if 'new_entry' in locals():
     st.success("Daten erfolgreich gespeichert!")
-
