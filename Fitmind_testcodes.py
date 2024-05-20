@@ -3,7 +3,7 @@ import streamlit as st
 
 data_df = pd.DataFrame(
     {
-        "Datum": [current_date = datetime.now().date()],
+        "Datum": ["Mood", "Stress"],
     }
 )
 
