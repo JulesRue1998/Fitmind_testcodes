@@ -4,8 +4,8 @@ from datetime import datetime
 
 # Funktion zum Hinzufügen von Zeilen
 def add_rows(df, num_rows):
+    current_date = datetime.now().date()
     for i in range(num_rows):
-        current_date = st.date_input(f"Zeile {len(df)+i+1}: Datum", datetime.now().date())
         mood = st.number_input(f"Zeile {len(df)+i+1}: Mood", min_value=1, max_value=10, step=1)
         stress = st.number_input(f"Zeile {len(df)+i+1}: Stress", min_value=1, max_value=10, step=1)
         df.loc[len(df)] = [current_date, mood, stress]
