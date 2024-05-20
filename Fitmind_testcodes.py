@@ -19,10 +19,6 @@ df.loc[len(df)] = [current_date, mood, stress]
 st.write("Eingegebene Daten:")
 st.dataframe(df)
 
-import streamlit as st
-import pandas as pd
-from datetime import datetime
-
 # Funktion zum Laden des vorhandenen DataFrames oder zum Erstellen eines neuen, falls keiner vorhanden ist
 def load_or_create_df():
     try:
