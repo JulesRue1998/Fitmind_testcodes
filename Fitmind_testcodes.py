@@ -21,9 +21,6 @@ if selected_subcategory == "Stress & Mood Tracker":
     new_entry = {'Datum': pd.Timestamp.now().date(), 'Stimmung': mood, 'Stresslevel': stress_level}
     st.session_state.mood_data = st.session_state.mood_data.append(new_entry, ignore_index=True)
 
-    # Filter the DataFrame to keep only the last 30 entries
-    mood_data_last_30_days = st.session_state.mood_data.tail(30)
-
     # Chart elements
-    st.write("Mood and stress level over the last 30 days:")
-    st.line_chart(mood_data_last_30_days.set_index('Datum'))
+    st.write("Mood and stress level over time:")
+    st.line_chart(st.session_state.mood_data.set_index('Datum'))
