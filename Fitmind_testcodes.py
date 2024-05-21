@@ -1,41 +1,29 @@
-import pandas as pd
 import streamlit as st
-from datetime import datetime
+import pandas as pd
+import numpy as np
 
-st.subheader("Mood & Stress Tracker")
+if selected_subcategory == "Stress & Mood Tracker":
+    st.subheader("Track your stress ")
+    st.write('Enter your stress level for each day.')
+    
+    # Text elements
+    st.write("How is your mood today?")
+    mood = st.slider("Mood", 0, 10, 5)
 
-# DataFrame mit den Spalten "Datum", "Mood" und "Stress"
-data_df = pd.DataFrame(columns=["Datum", "Mood", "Stress"])
+    st.write("How stressed have you been today?")
+    stress_level = st.slider("Stress level", 0, 10, 5)
 
-# Funktion zum Hinzufügen einer neuen Zeile
-def add_row():
-    # Überprüfen, ob bereits ein Eintrag für das heutige Datum vorhanden ist
-    today_entries = data_df[data_df["Datum"] == datetime.now().date()]
-    if len(today_entries) == 0:  # Wenn kein Eintrag vorhanden ist, eine neue Zeile hinzufügen
-        new_row = {"Datum": datetime.now().date(), "Mood": None, "Stress": None}
-        data_df.loc[len(data_df)] = new_row
-    else:
-        st.warning("Eintrag für heute existiert bereits.")
+    # Create or load the DataFrame
+    if 'mood_data' not in st.session_state:
+        st.session_state.mood_data = pd.DataFrame(columns=['Datum', 'Stimmung', 'Stresslevel'])
 
-# Schaltfläche zum Hinzufügen einer neuen Zeile
-if st.button("Neue Zeile hinzufügen"):
-    add_row()
+    # Append new data to the DataFrame
+    new_entry = {'Datum': pd.Timestamp.now().date(), 'Stimmung': mood, 'Stresslevel': stress_level}
+    st.session_state.mood_data = st.session_state.mood_data.append(new_entry, ignore_index=True)
 
-# Benutzereingabe für Mood (beliebige Zahl)
-mood = st.text_input("Mood", key="mood")
-try:
-    mood = float(mood)  # Umwandlung des Benutzereingabewerts in eine Gleitkommazahl
-except ValueError:
-    mood = None  # Wenn die Eingabe keine gültige Zahl ist, wird None verwendet
-data_df["Mood"] = mood
+    # Filter the DataFrame to keep only the last 30 entries
+    mood_data_last_30_days = st.session_state.mood_data.tail(30)
 
-# Benutzereingabe für Stress (beliebige Zahl)
-stress = st.text_input("Stress", key="stress")
-try:
-    stress = float(stress)  # Umwandlung des Benutzereingabewerts in eine Gleitkommazahl
-except ValueError:
-    stress = None  # Wenn die Eingabe keine gültige Zahl ist, wird None verwendet
-data_df["Stress"] = stress
-
-# Anzeigen des DataFrames
-st.write(data_df)
+    # Chart elements
+    st.write("Mood and stress level over the last 30 days:")
+    st.line_chart(mood_data_last_30_days.set_index('Datum'))
