@@ -217,7 +217,7 @@ elif page == "Fitness":
         with col2:
            st.subheader("used Muscles")
            st.image("Back-Muscles-jpeg.webp")
-           st.write("Image Source: https://www.gorillasports.de/magazin/wp-content/uploads/2020/02/Rückenmuskulatur-Gorilla-Sports-Magazin.jpg")
+           st.write("Image Source: https://samarpanphysioclinic.com/muscles-of-the-back/")
         st.divider()
 
         st.subheader("Bird Dogs")
