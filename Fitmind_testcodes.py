@@ -874,7 +874,7 @@ elif page == "Fitness":
 
     
     elif second_subcategory == "Arms":
-            arms_fitness_übungen = [
+        arms_fitness_übungen = [
             "Arm Circles",
             "Bicep Curls",
             "Chair Dips",
@@ -891,6 +891,7 @@ elif page == "Fitness":
         ]
 
         st.subheader("Randomized Arm Workout")
+
         tab1, tab2, tab3 = st.tabs([":green-background[Beginner]", ":orange-background[Intermediate]", ":red-background[Advanced]"])
         with tab1:
            st.header(":green[Beginner Training]")
