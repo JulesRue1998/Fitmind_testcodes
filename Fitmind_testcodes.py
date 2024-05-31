@@ -216,7 +216,7 @@ elif page == "Fitness":
        
         with col2:
            st.subheader("used Muscles")
-           st.image("Back-Muscles-jpeg.webp")
+           st.image("Bilder/Back-Muscles-jpeg.webp")
            st.write("Image Source: https://samarpanphysioclinic.com/muscles-of-the-back/")
         st.divider()
         
@@ -317,7 +317,7 @@ elif page == "Fitness":
        
         with col2:
            st.subheader("used Muscles")
-           st.image("Muscles-wall.jpeg")
+           st.image("Bilder/Muscles-wall.jpeg")
            st.write("Image source: https://cdn.britannica.com/13/125813-050-BB16AC7C/Muscles-wall.jpg")
         st.divider()
         
@@ -512,7 +512,7 @@ elif page == "Fitness":
            
         with col2:
            st.subheader("Used Muscles")
-           st.image("glutes_muscles_480x480.jpeg")
+           st.image("Bilder/glutes_muscles_480x480.jpeg")
            st.write("Image source: https://asitisnutrition.com/blogs/health/7-exercises-to-achieve-strong-butt-improve-your-posture")
         st.divider()
 
@@ -732,7 +732,7 @@ elif page == "Fitness":
            
         with col2:
            st.subheader("used Muscles")
-           st.image("beinmuskeln.jpg")
+           st.image("Bilder/beinmuskeln.jpg")
            st.write("Image source: https://www.muskelpower.de/beinmuskeln/")
         st.divider()
 
@@ -1456,7 +1456,7 @@ elif page == "Mental Health":
             st.write("Adults and adolescents from 12 years of age take 1 tablet per day, about 30min to 1h before planned bedtime")
        
         with col2:
-            st.image("Zeller-Schlaf-Forte.png")
+            st.image("Bilder/Zeller-Schlaf-Forte.png")
             st.write("Image Source: https://zellerag.ch/media/cnrnvuav/zell_zeller_schlaf_forte_30filmtabl_de.png?anchor=bottomcenter&mode=max&format=png&width=940&lazyload=true&lazyloadPixelated=true&height=705&preferFocalPoint=false&useCropDimensions=false&maxwidth=3200&maxheight=3200&c.focalPoint=0.5%2C0.5&c.finalmode=crop&c.zoom=false")
         st.divider()
 
@@ -1469,7 +1469,7 @@ elif page == "Mental Health":
             st.write("Lasea is taken once a day, preferably in the evening with a meal and a glass of still water. Lasea is for adults aged 18 and over and is available over the counter in pharmacies and drugstores.")
        
         with col2:
-            st.image("Lasea.jpeg")
+            st.image("Bilder/Lasea.jpeg")
             st.write("https://www.lasea.ch/sites/g/files/oawcqg281/files/styles/landscape_extra_large/public/2023-02/lasea-lavendelol_0.jpg.webp?itok=NfKPykot")
         st.divider()
         
@@ -1481,7 +1481,7 @@ elif page == "Mental Health":
             st.write("Adults over the age of 18 take 2 tablets a day, one before breakfast and one before lunch. The tablet should be taken with a glass of water.")
        
         with col2:
-            st.image("vitango.jpeg")
+            st.image("Bilder/vitango.jpeg")
             st.write("https://www.schwabepharma.ch/sites/g/files/oawcqg1436/files/styles/landscape_full/public/2022-04/vitango-stress-muedigkeit-packshot-deutsch.jpg.webp?itok=tIReNZPR")
         st.divider()
         
@@ -1489,11 +1489,11 @@ elif page == "Mental Health":
         st.write("Hyperiforce is a fresh plant preparation made from the fresh shoot tips of flowering St. John's wort (Hypericum perforatum). Hyperiforce is used for depressed mood, lack of drive, imbalance, mood instability and states of tension")
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader("A. Vogel Hyperiforce")
+            st.subheader("Bilder/A. Vogel Hyperiforce")
             st.write("The preparation should be taken for at least 14 days until it takes effect. At the start of treatment, take 1 tablet 3 times a day with meals and a little liquid. After 2 weeks, take 1 tablet twice a day. A treatment period of 4-6 weeks is recommended.")
        
         with col2:
-            st.image("Hyperiforce.png")
+            st.image("Bilder/Hyperiforce.png")
             st.write("https://www.avogel-company.ch/img/client/av3-packshots-deutsch/2020_Hyperiforce_120T_CH_d.png?m=1608019976")
         st.divider()
         
